@@ -1,16 +1,14 @@
+İşte orijinal fontlarınızla ve istenilen animasyonları içeren güncellenmiş kod:
+
+```vue
 <script setup>
 import { ref } from 'vue';
 
 const showContent = ref(false);
 const isEnglish = ref(true);
-const isSlidingOut = ref(false);
 
 const handleClick = () => {
-  isSlidingOut.value = true;
-  setTimeout(() => {
-    showContent.value = !showContent.value;
-    isSlidingOut.value = false;
-  }, 500); // Match the duration of the slide-out animation
+  showContent.value = !showContent.value;
 };
 
 const switchLanguage = (language) => {
@@ -26,11 +24,11 @@ const switchLanguage = (language) => {
       <button @click="switchLanguage('tr')" :class="{'active': !isEnglish}">Turkish</button>
     </div>
     <div class="centered">
-      <div v-if="!showContent" :class="['classic-font', 'fade-in', { 'slide-out-left': isSlidingOut }]">
+      <div v-show="!showContent" class="classic-font fade-in" :class="{ 'slide-out-left': showContent }">
         {{ isEnglish ? 'Tümer Bektaş Gediz' : 'Tümer Bektaş Gediz' }}
       </div>
-      <button v-if="!showContent" @click="handleClick" class="fade-in button">{{ isEnglish ? 'More' : 'Daha Fazla' }}</button>
-      <div v-if="showContent" class="fade-in slide-in-right">
+      <button v-show="!showContent" @click="handleClick" class="fade-in button">{{ isEnglish ? 'More' : 'Daha Fazla' }}</button>
+      <div v-show="showContent" class="fade-in slide-in-right">
         <p class="subtitle fade-in">
           {{ isEnglish ? 'Computer Engineering Student, Software Developer.' : 'Bilgisayar Mühendisliği Öğrencisi, Yazılım Geliştirici.' }}
         </p>
@@ -277,7 +275,9 @@ html, body {
 
   .language-switch {
     top: 0.5rem;
-    right: 0.5rem;
+    right:
+
+ 0.5rem;
     gap: 0.25rem; /* Reduce space between buttons */
   }
 
@@ -296,29 +296,12 @@ html, body {
 
   .description {
     font-size: 1.2rem; /* Smaller font size for mobile */
-    max-width: 100%; /* Full width for better mobile readability */
-  }
-
-  .social-links {
-    margin-top: 2rem; /* Adjust margin for mobile */
-  }
-
-  .links {
-    gap: 1.5rem; /* Smaller gap for mobile */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Enable horizontal scrolling */
-  }
-
-  .link-group {
-    flex: 1 1 100%; /* Each link group takes full width */
-  }
-
-  .link-group h3 {
-    font-size: 1.25rem; /* Smaller heading size for mobile */
-  }
-
-  .link-group a {
-    font-size: 1rem; /* Smaller font size for mobile links */
+    max-width: 90%;
+    line-height: 1.5;
+    display: block;
   }
 }
 </style>
+```
+
+Bu kod, mevcut fontlarınızı koruyarak ve animasyonları ekleyerek talep ettiğiniz değişiklikleri içerir.
