@@ -3,9 +3,14 @@ import { ref } from 'vue';
 
 const showContent = ref(false);
 const isEnglish = ref(true);
+const isSlidingOut = ref(false);
 
 const handleClick = () => {
-  showContent.value = !showContent.value;
+  isSlidingOut.value = true;
+  setTimeout(() => {
+    showContent.value = !showContent.value;
+    isSlidingOut.value = false;
+  }, 500); // Match the duration of the slide-out animation
 };
 
 const switchLanguage = (language) => {
@@ -21,11 +26,11 @@ const switchLanguage = (language) => {
       <button @click="switchLanguage('tr')" :class="{'active': !isEnglish}">Turkish</button>
     </div>
     <div class="centered">
-      <div v-show="!showContent" class="classic-font fade-in" :class="{ 'slide-out-left': showContent }">
+      <div v-if="!showContent" :class="['classic-font', 'fade-in', { 'slide-out-left': isSlidingOut }]">
         {{ isEnglish ? 'Tümer Bektaş Gediz' : 'Tümer Bektaş Gediz' }}
       </div>
-      <button v-show="!showContent" @click="handleClick" class="fade-in button">{{ isEnglish ? 'More' : 'Daha Fazla' }}</button>
-      <div v-show="showContent" class="fade-in slide-in-right">
+      <button v-if="!showContent" @click="handleClick" class="fade-in button">{{ isEnglish ? 'More' : 'Daha Fazla' }}</button>
+      <div v-if="showContent" class="fade-in slide-in-right">
         <p class="subtitle fade-in">
           {{ isEnglish ? 'Computer Engineering Student, Software Developer.' : 'Bilgisayar Mühendisliği Öğrencisi, Yazılım Geliştirici.' }}
         </p>
@@ -252,21 +257,14 @@ html, body {
 /* Font definitions */
 @font-face {
   font-family: 'BGrove';
-  src: url('./assets/bgrove.ttf') format('truetype');
+  src: url('/Fonts/bgrove.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Rawen';
-  src: url('./assets/RawengulkSans-094.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'LiberationSans';
-  src: url('./assets/LiberationSans-Regular.ttf') format('truetype');
+  src: url('/Fonts/RawenScript.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
