@@ -1,6 +1,3 @@
-İşte orijinal fontlarınızla ve istenilen animasyonları içeren güncellenmiş kod:
-
-```vue
 <script setup>
 import { ref } from 'vue';
 
@@ -255,14 +252,21 @@ html, body {
 /* Font definitions */
 @font-face {
   font-family: 'BGrove';
-  src: url('/Fonts/bgrove.ttf') format('truetype');
+  src: url('./assets/bgrove.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Rawen';
-  src: url('/Fonts/RawenScript.otf') format('opentype');
+  src: url('./assets/RawengulkSans-094.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LiberationSans';
+  src: url('./assets/LiberationSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -275,9 +279,7 @@ html, body {
 
   .language-switch {
     top: 0.5rem;
-    right:
-
- 0.5rem;
+    right: 0.5rem;
     gap: 0.25rem; /* Reduce space between buttons */
   }
 
@@ -296,12 +298,29 @@ html, body {
 
   .description {
     font-size: 1.2rem; /* Smaller font size for mobile */
-    max-width: 90%;
-    line-height: 1.5;
-    display: block;
+    max-width: 100%; /* Full width for better mobile readability */
+  }
+
+  .social-links {
+    margin-top: 2rem; /* Adjust margin for mobile */
+  }
+
+  .links {
+    gap: 1.5rem; /* Smaller gap for mobile */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .link-group {
+    flex: 1 1 100%; /* Each link group takes full width */
+  }
+
+  .link-group h3 {
+    font-size: 1.25rem; /* Smaller heading size for mobile */
+  }
+
+  .link-group a {
+    font-size: 1rem; /* Smaller font size for mobile links */
   }
 }
 </style>
-```
-
-Bu kod, mevcut fontlarınızı koruyarak ve animasyonları ekleyerek talep ettiğiniz değişiklikleri içerir.
