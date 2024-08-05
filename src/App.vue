@@ -3,7 +3,6 @@ import { ref } from 'vue';
 
 const showContent = ref(false);
 const isEnglish = ref(true);
-const isDarkMode = ref(true); // Add a state for dark mode
 
 const handleClick = () => {
   showContent.value = !showContent.value;
@@ -13,17 +12,10 @@ const switchLanguage = (language) => {
   isEnglish.value = language === 'en';
   showContent.value = false; // Reset content visibility when switching languages
 };
-
-const toggleTheme = () => {
-  isDarkMode.value = !isDarkMode.value;
-};
 </script>
 
 <template>
-  <div :class="['container', { 'dark-mode': isDarkMode, 'light-mode': !isDarkMode }]">
-    <div class="theme-toggle">
-      <button @click="toggleTheme">Toggle Theme</button>
-    </div>
+  <div class="container">
     <div class="language-switch">
       <button @click="switchLanguage('en')" :class="{'active': isEnglish}">English</button>
       <button @click="switchLanguage('tr')" :class="{'active': !isEnglish}">Turkish</button>
@@ -89,22 +81,6 @@ html, body {
   overflow: hidden; /* Hide overflow to remove scrollbars */
 }
 
-.dark-mode {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.light-mode {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
-
 .language-switch {
   position: absolute;
   top: 1rem;
@@ -113,16 +89,15 @@ html, body {
   gap: 0.5rem; /* Space between buttons */
 }
 
-.language-switch button, .theme-toggle button {
+.language-switch button {
   background-color: transparent;
-  color: inherit;
+  color: #ffffff;
   border: 2px solid transparent; /* Border for active state */
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-family: 'Rawen'; /* Use the same font as the main text */
   transition: color 0.3s, border-color 0.3s; /* Smooth transition for color changes */
-  border-radius: 8px; /* Kenarları yuvarlat */
 }
 
 .language-switch button.active {
@@ -143,6 +118,7 @@ html, body {
 .classic-font {
   font-size: 6rem;
   font-family: 'Rawen';
+  color: #ffffff;
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition */
 }
 
@@ -150,7 +126,7 @@ html, body {
   margin-top: 1rem;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
-  color: inherit; /* Use inherited text color */
+  color: #ffffff; /* Yazı rengi beyaz */
   background-color: #000000; /* Arka plan rengi siyah */
   border: none;
   cursor: pointer;
@@ -205,6 +181,7 @@ html, body {
 
 .subtitle {
   font-size: 2rem;
+  color: #ffffff;
   font-family: 'Rawen'; /* Use the same font as the main text */
   margin-top: 0.5rem;
   display: block;
@@ -212,6 +189,7 @@ html, body {
 
 .description {
   font-size: 1.5rem;
+  color: #ffffff;
   margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
@@ -236,6 +214,7 @@ html, body {
 .link-group {
   text-align: center;
   font-family: 'Rawen';
+  color: #ffffff;
   display: block;
 }
 
@@ -246,6 +225,7 @@ html, body {
 
 .link-group a {
   display: block;
+  color: #ffffff;
   text-decoration: none;
   margin-bottom: 0.5rem;
 }
@@ -262,6 +242,7 @@ html, body {
   font-size: 0.9rem;
   font-weight: 300; /* Light font weight */
   font-family: 'Rawen'; /* Use a light-weight font if available */
+  color: #ffffff;
 }
 
 .turkish-font {
@@ -283,9 +264,62 @@ html, body {
   font-style: normal;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@font-face {
+  font-family: 'LiberationSans';
+  src: url('./assets/LiberationSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
-</style>
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem; /* Add padding to the body for mobile */
+  }
+
+  .language-switch {
+    top: 0.5rem;
+    right: 0.5rem;
+    gap: 0.25rem; /* Reduce space between buttons */
+  }
+
+  .classic-font {
+    font-size: 4rem; /* Smaller font size for mobile */
+  }
+
+  .button {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem; /* Smaller font size for mobile */
+  }
+
+  .description {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+    max-width: 100%; /* Full width for better mobile readability */
+  }
+
+  .social-links {
+    margin-top: 2rem; /* Adjust margin for mobile */
+  }
+
+  .links {
+    gap: 1.5rem; /* Smaller gap for mobile */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .link-group {
+    flex: 1 1 100%; /* Each link group takes full width */
+  }
+
+  .link-group h3 {
+    font-size: 1.25rem; /* Smaller heading size for mobile */
+  }
+
+  .link-group a {
+    font-size: 1rem; /* Smaller font size for mobile links */
+  }
+}
