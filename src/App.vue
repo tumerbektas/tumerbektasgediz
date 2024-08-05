@@ -98,6 +98,7 @@ html, body {
   padding: 0.5rem 1rem;
   font-family: 'Rawen'; /* Use the same font as the main text */
   transition: color 0.3s, border-color 0.3s; /* Smooth transition for color changes */
+  border-radius: 8px; /* Kenarları yuvarlat */
 }
 
 .language-switch button.active {
