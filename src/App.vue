@@ -323,3 +323,4 @@ html, body {
     font-size: 1rem; /* Smaller font size for mobile links */
   }
 }
+</style>
