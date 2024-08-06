@@ -32,7 +32,7 @@ const switchLanguage = (language) => {
         <p class="description fade-in">
           {{ isEnglish 
             ? "I'm Tümer, a senior student in Computer Engineering. I'm doing an internship as a Software Engineer and striving to develop myself professionally."
-            : "Ben Tümer, Bilgisayar Mühendisliği son sınıf öğrencisiyim.Yazılım Mühendisliği alanında staj yapıyorum ve kendimi profesyonel olarak geliştirmeye çalışıyorum." }}
+            : "Ben Tümer, Bilgisayar Mühendisliği son sınıf öğrencisiyim. Yazılım Mühendisliği alanında staj yapıyorum ve kendimi profesyonel olarak geliştirmeye çalışıyorum." }}
         </p>
         <div class="social-links">
           <div class="links fade-in">
