@@ -27,12 +27,12 @@ const switchLanguage = (language) => {
       <button v-show="!showContent" @click="handleClick" class="fade-in button">{{ isEnglish ? 'More' : 'Daha Fazla' }}</button>
       <div v-show="showContent" class="fade-in slide-in-right">
         <p class="subtitle fade-in">
-          {{ isEnglish ? 'Computer Engineer' : 'Bilgisayar Mühendisi' }}
+          {{ isEnglish ? 'Software Engineer' : 'Yazılım Mühendisi' }}
         </p>
         <p class="description fade-in">
           {{ isEnglish 
-            ? "I'm Tümer, a senior student in Computer Engineering. I'm doing an internship as a Software Engineer and striving to develop myself professionally."
-            : "Ben Tümer, Bilgisayar Mühendisliği son sınıf öğrencisiyim. Yazılım Mühendisliği alanında staj yapıyorum ve kendimi profesyonel olarak geliştirmeye çalışıyorum." }}
+            ? "I'm Tumer. I'm Senior Computer Engineering Student. I'm currently doing an internship in the C#/.NET field and I'm trying to improve myself in the field of Software Engineering."
+            : "Ben Tümer. Bilgisayar Mühendisliği son sınıf öğrencisiyim. Şu anda C#/.NET alanında staj görmekteyim ve kendimi Yazılım Mühendisliği alanında geliştirmek için çabalıyorum." }}
         </p>
         <div class="social-links">
           <div class="links fade-in">
